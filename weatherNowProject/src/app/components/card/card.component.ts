@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,10 +6,23 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 
-export class CardComponent {
+export class CardComponent implements OnInit{
 
   @Input() datas;
+  @Input() updatedTime;
   
-  constructor() { }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.convertToCelcius();
+
+  }
+
+  convertToCelcius() {
+   this.datas.array.forEach(element => {
+     Math.round(element.main.temp -= 273.15);
+   })
+  }
 
 }

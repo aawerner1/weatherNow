@@ -1,38 +1,73 @@
-.card {
-    position: relative;
-    width: auto;
-    height: 200px;
-    box-shadow: 1px 2px 10px 0px rgba(51, 51, 51, 0.1);
-    border-radius: .25rem;
-    background-color: white;
-    text-align: center;
-    transition: .50s;
+@mixin flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    &:hover {
-        transform: scale(1.03);
-    }
+.group__card {
+    @include flexbox();
+    flex-wrap: wrap;
 
-    & > * {
-        padding: .5rem;
-    }
+    .card {        
+        text-align: center; 
+        box-shadow: 1px 2px 10px 0px rgba(51, 51, 51, 0.1);
+        border-radius: .25rem;
+        background-color: white;
+        margin: 14px;
+        min-width: 300px;
+    
+        & > * {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    
+        .card__head {
+            border-bottom: 1px solid #EBEBEB;
+            color: #737C84;
+            font-size: 16px;    
+        }
+    
+        .card__body {
+            font-size: 60px;
+            margin: 20px 0;
 
-    .card__head {
-        border-bottom: 1px solid #EBEBEB;
-        color: #737C84;
-        font-size: 18px;
-        font-weight: 300px;
+            &.cold {
+                color: #69A3FF;
+            }
 
-    }
+            &.medium {
+                color: #FF9632;
+            }
 
-    .card__body {
-        font-size: 90px;
-    }
+            &.warm {
+                color: #ED1946;
+            }
+        }
+    
+        .card__footer {
+            @include flexbox();
+            flex-direction: column;
+            background-color: rgba($color: #F1F1F1, $alpha: 0.5);
+            color: #b4b4b4;
 
-    .card__footer {
-        background-color: rgba($color: #F1F1F1, $alpha: 0.5);
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+            .card__footer--dataWeather {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+                font-size: 14px;
+                
+                label {
+                    text-transform: uppercase;
+                }
 
+                p {
+                    color: #737C84;
+                    text-align: center;
+                    margin: 2px 0 4px 0;
+                }
+            }
+        }
     }
 }

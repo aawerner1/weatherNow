@@ -1,7 +1,7 @@
-export interface WeatherData {
+export interface IWeatherData {
     temp: number;
-    city: string;
-    state: string;
+    name: string;
+    country: string;
     humity: number;
     pressure: number;
 }

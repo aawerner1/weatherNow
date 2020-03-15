@@ -1,18 +1,33 @@
-<div class="container" *ngFor="let data of datas">
-  <div class="card" >
-  
+<div class="group__card">
+  <div class="card" *ngFor="let data of datas, index as i">
+
     <div class="card__head">
       {{data.name}}, {{data.sys.country}}
     </div>
-  
-    <div class="card__body">
-      {{data.main.temp}}
+
+    <div class="card__body" 
+      [ngClass]="{'cold': data.main.temp <= 5, 
+                  'medium': data.main.temp > 5 && data.main.temp <= 25, 
+                  'warm': data.main.temp > 25}">
+      {{data.main.temp}}°
     </div>
-  
+
     <div class="card__footer">
-      {{data.main.humidity}}
-      {{data.main.pressure}}       
+      <div class="card__footer--dataWeather" *ngIf="i == 1">
+        <div>
+          <label>Humidity</label>
+          <p>{{data.main.humidity}}<small>%</small></p>
+        </div>
+        <div>
+          <label>Pressure</label>
+          <p>{{data.main.pressure}}<small>hPa</small></p>
+        </div>
+
+      </div>
+      <div class="card__footer--updated">
+        <small>updated at {{updatedTime | date:'mediumTime'}}</small>
+      </div>
     </div>
   </div>
-  
+
 </div>
