@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
-import { interval } from 'rxjs';
-
 
 @Component({
   selector: 'app-home',
@@ -15,12 +13,13 @@ export class HomeComponent {
   lastUpdated = Date.now();  
 
   constructor(private httpService: HttpService) {
+    this.updateDatas()  
+  }
 
-    this.updateDatas()
+  //600000
 
-    //600000
-    interval(60000).subscribe(x => this.updateDatas())
-    
+  ngOnInit(){
+    setInterval(()=>{this.updateDatas()}, 60000);
   }
 
   createDB() {
