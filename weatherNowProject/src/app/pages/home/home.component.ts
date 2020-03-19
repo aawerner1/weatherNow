@@ -16,14 +16,10 @@ export class HomeComponent {
 
   constructor(private httpService: HttpService) {
 
-    this.updatedTime()
-    this.getAPI()
+    this.updateDatas()
 
     //600000
-    interval(60000).subscribe(x => {
-      this.updatedTime();
-      this.getAPI();
-    })
+    interval(60000).subscribe(x => this.updateDatas())
     
   }
 
@@ -49,6 +45,11 @@ export class HomeComponent {
   updatedTime() {
     delete this.lastUpdated;
     this.lastUpdated = Date.now();
+  }
+
+  updateDatas() {
+    this.updatedTime()
+    this.getAPI()
   }
 
 }

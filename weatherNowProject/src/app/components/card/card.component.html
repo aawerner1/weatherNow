@@ -2,25 +2,25 @@
   <div class="card" *ngFor="let data of datas, index as i">
 
     <div class="card__head">
-      {{data.name}}, {{data.sys.country}}
+      {{data.name}}, {{data.country}}
     </div>
 
     <div class="card__body" 
-      [ngClass]="{'cold': data.main.temp <= 5, 
-                  'medium': data.main.temp > 5 && data.main.temp <= 25, 
-                  'warm': data.main.temp > 25}">
-      {{data.main.temp}}°
+      [ngClass]="{'cold': data.temp <= 5, 
+                  'medium': data.temp > 5 && data.temp <= 25, 
+                  'warm': data.temp > 25}">
+      {{data.temp}}°
     </div>
 
     <div class="card__footer">
       <div class="card__footer--dataWeather" *ngIf="i == 1">
         <div>
           <label>Humidity</label>
-          <p>{{data.main.humidity}}<small>%</small></p>
+          <p>{{data.humidity}}<small>%</small></p>
         </div>
         <div>
           <label>Pressure</label>
-          <p>{{data.main.pressure}}<small>hPa</small></p>
+          <p>{{data.pressure}}<small>hPa</small></p>
         </div>
 
       </div>
