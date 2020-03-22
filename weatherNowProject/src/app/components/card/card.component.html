@@ -5,10 +5,8 @@
       {{data.name}}, {{data.country}}
     </div>
 
-    <div class="card__body" 
-      [ngClass]="{'cold': data.temp <= 5, 
-                  'medium': data.temp > 5 && data.temp <= 25, 
-                  'warm': data.temp > 25}">
+    <div class="card__body"
+      [ngClass]="{'cold': data.temp <= 5, 'medium': data.temp > 5 && data.temp <= 25, 'warm': data.temp > 25}">
       {{data.temp}}&deg;
     </div>
 
@@ -25,9 +23,13 @@
 
       </div>
       <div class="card__footer--updated">
-        <small>updated at {{updatedTime | date:'mediumTime'}}</small>
+        <small>updated at {{currentTime | date:'mediumTime'}}</small>
       </div>
     </div>
   </div>
 
+  <div class="card__error" *ngIf="cardErro">
+    <p>Something went wrong</p>
+    <button  (click)="tryAgain()">Try Again</button>
+  </div>
 </div>

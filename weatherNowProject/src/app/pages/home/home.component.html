@@ -1,8 +1,2 @@
-<header class="top">
-  <img src="../../../assets/img/logo.svg" alt="Brand Weather Now" width="200px">
-</header>
-
-
-<main class="container">
-  <app-card [datas]="weatherDatas" [updatedTime]="lastUpdated"></app-card>
-</main>
+<app-top></app-top>
+<app-card [citys]="db"></app-card>

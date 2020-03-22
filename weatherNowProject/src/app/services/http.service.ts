@@ -14,8 +14,10 @@ export class HttpService {
   apiKey = '7334a256d69d76daef558fdbcf53527d'
 
   getWeatherData(db) {
+    console.log('db', db);
+
     return this.http
-      .get(`http://api.openweathermap.org/data/2.5/weather?q=${db.name},${db.country}&units=metric&appid=`+ this.apiKey)
+      .get(`http://api.openweathermap.org/data/2.5/weather?q=${db.name}&units=metric&appid=`+ this.apiKey)
       .pipe(
         map(data => {
           return new WeatherData(
@@ -27,7 +29,6 @@ export class HttpService {
           )
         })
       )
-      .toPromise()
   }
- 
+
 }
